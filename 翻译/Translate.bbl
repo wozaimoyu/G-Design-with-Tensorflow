@@ -1,0 +1,94 @@
+\begin{thebibliography}{10}
+
+\bibitem{ref1}
+T.~S. Rappaport, S.~Sun, R.~Mayzus, H.~Zhao, Y.~Azar, K.~Wang, G.~Wong, J.~K.
+  Schulz, M.~Samimi, and F.~Gutierrez, ``Millimeter wave mobile communications
+  for {5G} cellular: It will work!,'' {\em IEEE Access}, vol.~1, p.~335–349,
+  May 2013.
+
+\bibitem{ref2}
+T.~Marzetta, ``{Noncooperative cellular wireless with unlimited numbers of base
+  station antennas},'' {\em IEEE Trans. Wireless Commun}, vol.~9,no. 11,
+  p.~3590–3600, Nov. 2010.
+
+\bibitem{ref3}
+X.~Zhang, A.~Molisch, and S.-Y. Kung, ``{Variable-phase-shift-based RF-baseband
+  codesign for MIMO antenna selection},'' {\em IEEE Trans. Signal Process.},
+  vol.~53,no. 11, p.~4091–4103, Oct. 2005.
+
+\bibitem{ref4}
+O.~El~Ayach, S.~Rajagopal, S.~Abu-Surra, Z.~Pi, and R.~Heath, ``{Spatially
+  sparse precoding in millimeter wave MIMO systems},'' {\em IEEE Trans.Wireless
+  Commun.}, vol.~13,no. 3, p.~1499–1513, Mar. 2014.
+
+\bibitem{ref5}
+A.~Alkhateeb, O.~El~Ayach, G.~Leus, and R.~Heath, ``{Channel estimation and
+  hybrid precoding for millimeter wave cellular systems},'' {\em IEEE J.
+  Sel.Topics Signal Process.}, vol.~8,no. 5, p.~831–846, Oct. 2014.
+
+\bibitem{ref6}
+J.~Lee, G.~Gil, and Y.~H. Lee, ``{Channel estimation via orthogonal matching
+  pursuit for hybrid MIMO systems in millimeter wave communications},'' {\em
+  IEEE Trans. Commun.}, vol.~64,no. 6, p.~2370–2386, June 2016.
+
+\bibitem{ref7}
+C.~Hu, L.~Dai, T.~Mir, Z.~Gao, and J.~Fang, ``{Super-resolution channel
+  estimation for mmWave massive MIMO with hybrid precoding},'' {\em IEEE Trans.
+  Veh. Technol.}, vol.~67,no. 9, p.~8954–8958, Sept. 2018.
+
+\bibitem{ref8}
+F.~Bellili, F.~Sohrabi, and W.~Yu, ``{Generalized approximate message passing
+  for massive MIMO mmWave channel estimation with Laplacian prior},'' {\em IEEE
+  Trans. Commun.}, vol.~67,no. 5, p.~3205–3219, May 2019.
+
+\bibitem{ref9}
+F.~Sohrabi and W.~Yu, ``{Hybrid digital and analog beamforming design for
+  large-scale antenna arrays},'' {\em IEEE J. Sel. Topics Signal Process.},
+  vol.~10,no. 3, p.~501–513, Jan. 2016.
+
+\bibitem{ref10}
+L.~Liang, W.~Xu, and X.~Dong, ``{Low-complexity hybrid precoding in massive
+  multiuser MIMO systems},'' {\em IEEE Wireless Commun. Lett.}, vol.~3,no. 6,
+  p.~653–656, Dec. 2014.
+
+\bibitem{ref11}
+A.~Li and C.~Masouros, ``{Hybrid precoding and combining design for
+  millimeter-wave multi-user MIMO based on SVD},'' {\em IEEE Int. Conf. Commun.
+  (ICC),Paris, France}, p.~1–6, May 2017.
+
+\bibitem{ref12}
+M.~Borgerding, P.~Schniter, and S.~Rangan, ``{AMP-inspired deep networks for
+  sparse linear inverse problems},'' {\em IEEE Trans. Signal Process.},
+  vol.~65,no. 16, p.~4293–4308, Aug. 2017.
+
+\bibitem{ref13}
+T.~Lin and Y.~Zhu, ``{Beamforming design for large-scale antenna arrays using
+  deep learning},'' {\em IEEE Wireless Commun. Lett.}, vol.~9,no. 1,
+  p.~103–107, Jan. 2020.
+
+\bibitem{ref14}
+A.~M.~Elbir, ``{CNN-based precoder and combiner design in mmWave MIMO
+  systems},'' {\em IEEE Commun. Lett}, vol.~23,no. 7, p.~1240–1243, July
+  2019.
+
+\bibitem{ref15}
+A.~M.~Elbir and A.~K.~Papazafeiropoulos, ``{Hybrid precoding for multiuser
+  millimeter wave massive MIMO systems: A deep learning approach},'' {\em IEEE
+  Trans. Veh. Technol}, vol.~69,no. 1, p.~552–563, Jan.2020.
+
+\bibitem{ref16}
+W.~Ma, C.~Qi, Z.~Zhang, and J.~Cheng, ``{Sparse channel estimation and hybrid
+  precoding using deep learning for millimeter wave massive MIMO},'' {\em IEEE
+  Trans. Commun.}, vol.~68,no. 5, p.~2838–2849, Jan.2020.
+
+\bibitem{ref17}
+G.~S.~Smith, ``{A direct derivation of a single-antenna reciprocity relation
+  for the time domain},'' {\em IEEE Trans. Antennas Propag.}, vol.~52,no. 6,
+  p.~1568–1577, June 2004.
+
+\bibitem{ref18}
+M.~Abadi~et al., ``{TensorFlow: Large-scale machine learning on heterogeneous
+  distributed systems},'' Mar. 2016. [Online]. Available:
+  https://arxiv.org/abs/1603.04467.
+
+\end{thebibliography}
