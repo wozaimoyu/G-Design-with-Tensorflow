@@ -3,36 +3,33 @@ from tensorflow import keras
 from tensorflow.keras import layers
 from tensorflow.keras import datasets
 import numpy as np
+import hk
 import  os
 
 
-class SAELayer(layers.Layer):
-    def __init__(self, num_outputs):
-        super(SAELayer, self).__init__()
-        self.num_outputs = num_outputs
-	
-    def build(self, input_shape):
-        self.kernel = self.add_variable("kernel",shape=[int(input_shape[-1]),self.num_outputs])
-        self.bias = self.add_variable("bias",shape=[self.num_outputs])
-    def call(self, input):
+class MyLayer(layers.Layer):
+    def __init__(self, in_dim, out_dim):
+        super(MyLayer, self).__init__()
+        self.kernel = self.add_variable("w",(in_dim, out_dim),trainable=True)
+        self.bias = self.add_variable("b",(out_dim,1),trainable=True)
+    def call(self, input, training=None):
         output = tf.matmul(input, self.kernel) + self.bias
-        output = tf.nn.relu(output)
         return output
-class SAEModel(Model):
-    def __init__(self, input_shape, output_shape, hidden_shape=None):
-        if hidden_shape == None:
-        hidden_shape = 0.5 * input_shape
-        super(SAEModel, self).__init__()
-        self.layer_1 = SAELayer(hidden_shape)
-        self.layer_2 = layers.Dense(output_shape, activation=tf.nn.relu)
 
+class MyModel(keras.Model):
+    def __init__(self):
+        super(MyModel, self).__init__()
+        self.layer_1 = MyLayer(64,2048)
+        self.layer_2 = MyLayer(2048,1024)
+        self.layer_3 = MyLayer(1024,512)
+    def call(self, inputs, training=None):
+        out=self.layer_1(inputs)
+        out=tf.nn.relu(out)
+        out=self.layer_2(out)
+        out=tf.nn.relu(out)
+        out=self.layer_3(out)
+        return out
 
-    def call(self, input_tensor, training=False):
-        hidden = self.layer_1(input_tensor)
-        output = self.layer_2(hidden)
-        return output
-    def loss()
-        loss=-np.log2(1+1/2.56*abs())
-        
+model=MyModel()
 
 
