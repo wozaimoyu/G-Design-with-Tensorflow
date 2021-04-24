@@ -7,20 +7,20 @@ import math
 import random
 
 
-def hk(lp=6,M=64):
+def h_k(lp=6,M=64):
     h_k=np.zeros(shape=(1,M),dtype=complex)
     for i in range(lp):
         at=np.array([],dtype=complex)
         for x in range(M):
             aod=random.uniform(1.0,90.0)
             at=np.append(at,np.exp(complex(0,np.pi*x*np.sin(aod))))          #天线距离为0.5倍波长
-            print(i,x,aod,at)
+            # print(i,x,aod,at)
         alpha=complex(np.random.normal(loc=0.0,scale=1.0),np.random.normal(loc=0.0,scale=1.0))
         h_k=h_k+1/np.sqrt(lp)*alpha*at
     # h_k=np.mat(hk)
         # print("hk等于",h_k)
     return h_k.T
-# b=hk()
+# b=h_k()
 # print("b等于",b)
 
     
