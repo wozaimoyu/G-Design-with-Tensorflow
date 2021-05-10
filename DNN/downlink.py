@@ -37,19 +37,11 @@ def Wrf(K,La,M):
             wrf_imag=np.mat(wrf_imag)
     return wrf_real,wrf_imag
 
-def nk(M):
-    nk_real=np.array([])
-    nk_imag=np.array([])
-    for i in range(M):
-        nk_real=np.append(nk_real,np.random.normal(loc=0.0,scale=0.1))
-        nk_imag=np.append(nk_imag,np.random.normal(loc=0.0,scale=0.1))
-    nk_real=np.mat(nk_real).T
-    nk_imag=np.mat(nk_imag).T
-    return nk_real,nk_imag
+
 
 def cre_yk(M,num,yhk_real,yhk_imag):
     Wrf_real,Wrf_imag=Wrf(4,6,64)
-    tem_nk_real,tem_nk_imag=nk(64)
+    tem_nk_real,tem_nk_imag=hk.nk(64)
     yk_real=np.matmul(Wrf_real,yhk_real+tem_nk_real)-np.matmul(Wrf_imag,yhk_imag+tem_nk_imag)
     yk_imag=np.matmul(Wrf_real,yhk_imag+tem_nk_imag)+np.matmul(Wrf_imag,yhk_real+tem_nk_real)
     yk_real=yk_real.T
@@ -57,7 +49,7 @@ def cre_yk(M,num,yhk_real,yhk_imag):
     #print(yk_real,yk_imag)
     for i in range(num):
         Wrf_real,Wrf_imag=Wrf(4,6,64)
-        tem_nk_real,tem_nk_imag=nk(64)
+        tem_nk_real,tem_nk_imag=hk.nk(64)
         # print(i)
         yk_real_tep=np.matmul(Wrf_real,yhk_real+tem_nk_real)-np.matmul(Wrf_imag,yhk_imag+tem_nk_imag)
         yk_imag_tep=np.matmul(Wrf_real,yhk_imag+tem_nk_imag)+np.matmul(Wrf_imag,yhk_real+tem_nk_real)
@@ -86,7 +78,7 @@ out=layers.Dense(64,activation=None)(out)
 concat = keras.layers.concatenate([ykimag,out])
 
 output = keras.layers.Dense(1)(concat)
-output2=output2 = keras.layers.Dense(1)(out)
+output2 = keras.layers.Dense(1)(out)
 
 model = keras.models.Model(inputs = [ykreal,ykimag],outputs = [output,output2])
 # out=tf.math.exp(out)

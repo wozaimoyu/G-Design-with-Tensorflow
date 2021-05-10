@@ -14,7 +14,7 @@ def cre_hk_real(lp,M):
         at_real=np.array([])
         at_imag=np.array([])
         for x in range(M):
-            aod=np.sin(np.random.uniform(1.0,90.0))
+            aod=np.sin(np.random.uniform(1.0,360.0))
             at_real=np.append(at_real,np.cos(np.pi*x*aod)) 
             at_imag=np.append(at_imag,np.sin(np.pi*x*aod))         #天线距离为0.5倍波长
             # print(i,x,aod,at)
@@ -34,6 +34,16 @@ def cre_hk_real(lp,M):
 # a,b=cre_hk_real(6,6)
 # print('a=',a)
 # print('b=',b)
+
+def nk(M):
+    nk_real=np.array([])
+    nk_imag=np.array([])
+    for i in range(M):
+        nk_real=np.append(nk_real,np.random.normal(loc=0.0,scale=0.1))
+        nk_imag=np.append(nk_imag,np.random.normal(loc=0.0,scale=0.1))
+    nk_real=np.mat(nk_real).T
+    nk_imag=np.mat(nk_imag).T
+    return nk_real,nk_imag
 
 
     
