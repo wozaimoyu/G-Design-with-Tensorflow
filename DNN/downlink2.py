@@ -3,47 +3,52 @@ from tensorflow import keras
 from tensorflow.keras import layers
 from tensorflow.keras import datasets
 import numpy as np
-import hk
+import mydata
 import os
 import math
-global g_M,g_K,g_P,g_seta
+global g_M,g_K,g_P,g_seta,g_la
 g_M=64
 g_K=4
 g_P=1
 g_seta=0.1
+g_la=6
 
-def cre_yk(M,num,yhk_real,yhk_imag,pu):
-    tem_nk_real,tem_nk_imag=hk.nk(64)
-    yk_real=yhk_real+tem_nk_real
-    yk_imag=yhk_imag+tem_nk_imag
-    yk_real=yk_real.T
-    yk_imag=yk_imag.T
-    #print(yk_real,yk_imag)
-    for i in range(num):
-        tem_nk_real,tem_nk_imag=hk.nk(64)
-        # print(i)
-        yk_real_tep=yhk_real+tem_nk_real
-        yk_imag_tep=yhk_imag+tem_nk_imag
-        yk_real_tep=yk_real_tep.T
-        yk_imag_tep=yk_imag_tep.T
-        #print(yk_real_tep,yk_imag_tep)
-        yk_real=np.c_[yk_real,yk_real_tep]
-        yk_imag=np.c_[yk_imag,yk_imag_tep]
-        #print('this time:',yk_real,yk_imag)
-        yk=np.c_[yk_real,yk_imag]
-    return yk.T
 
-user_hk_real,user_hk_imag=hk.cre_hk_real(6,64)
+class myWrf(tf.keras.layers.Layer):
+    def __init__(self,dtype=tf.float32):
+        super().__init__(
+            dtype=dtype
+        )
+
+    def build(self,input_shape):
+        print('input_shape=',input_shape)
+        self.aod=self.add_weight(
+            shape=(input_shape[-1]//2,g_la*g_K),initializer="random_normal",trainable=True
+        )
+
+    def call(self,input):
+        print('my_input=',input)
+        w_real=tf.cos(self.aod)
+        w_imag=tf.sin(self.aod)
+        w_left=tf.concat([w_real,w_imag],0)
+        w_right=tf.concat([-1*w_imag,w_real],0)
+        w=tf.concat([w_left,w_right],1)
+        return tf.matmul(input,w)
+
+
+user_hk_real,user_hk_imag=mydata.cre_hk_real(6,64)
 # print(user_hk_real.T,-user_hk_imag.T)
 
-yk=cre_yk(64,499,user_hk_real,user_hk_imag,1)
+yk=mydata.cre_yk(64,999,user_hk_real,user_hk_imag,1)
 
 yk=tf.convert_to_tensor(yk,dtype=tf.float32)
 # print(yk)
 
-Myinput=tf.keras.Input(shape=1,dtype=tf.float32)
+Myinput=tf.keras.Input(shape=128,dtype=tf.float32)
+# print('Myinput=',Myinput)
+my_wrf=myWrf()
 
-out=layers.Dense(48,activation=None)(Myinput)
+out=my_wrf(Myinput)
 out=layers.Dense(2048,activation=tf.nn.relu)(out)
 out=layers.Dense(1024,activation=tf.nn.relu)(out)
 out=layers.Dense(512,activation=tf.nn.relu)(out)
@@ -60,5 +65,5 @@ loss=-1*tf.math.log(1+g_P*(
                     )/tf.math.log(2.0)
 model.add_loss(loss)
 model.compile( optimizer = tf.keras.optimizers.SGD(lr = 0.0000001))
-model.fit(yk,batch_size=2560,epochs=10000)
+model.fit(yk,batch_size=2560,epochs=1000000)      #样本数199，batch_size=256貌似更好；样本数499，bz=2560，lr = 0.0000001
 
