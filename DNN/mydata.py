@@ -6,6 +6,13 @@ import numpy as np
 import math
 import random
 
+global g_M,g_K,g_P,g_seta,g_la,g_ld
+g_M=64
+g_K=4
+g_P=1
+g_seta=0.1
+g_la=6
+g_ld=2
 
 def cre_hk_real(lp,M):
     hk_real=np.zeros(shape=(1,M))
@@ -71,6 +78,21 @@ def cre_yk(M,num,yhk_real,yhk_imag,pu):
         # print(i,'yk=',yk)
     return yk     #维度(num+1,128)
 
+user_hk_real1,user_hk_imag1=cre_hk_real(6,g_M)
+yk1=cre_yk(g_M,0,user_hk_real1,user_hk_imag1,1)
+yk1=tf.convert_to_tensor(yk1,dtype=tf.float32)    #生成一个（1，128）的矩阵
+
+user_hk_real2,user_hk_imag2=cre_hk_real(6,g_M)
+yk2=cre_yk(g_M,0,user_hk_real2,user_hk_imag2,1)
+yk2=tf.convert_to_tensor(yk2,dtype=tf.float32)   
+
+user_hk_real3,user_hk_imag3=cre_hk_real(6,g_M)
+yk3=cre_yk(g_M,0,user_hk_real3,user_hk_imag3,1)
+yk3=tf.convert_to_tensor(yk3,dtype=tf.float32)   
+
+user_hk_real4,user_hk_imag4=cre_hk_real(6,g_M)
+yk4=cre_yk(g_M,0,user_hk_real4,user_hk_imag4,1)
+yk4=tf.convert_to_tensor(yk4,dtype=tf.float32)
 # user_hk_real,user_hk_imag=cre_hk_real(6,64)
 # # print(user_hk_real.T,-user_hk_imag.T)
 
